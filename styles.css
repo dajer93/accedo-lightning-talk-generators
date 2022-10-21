@@ -1,0 +1,22 @@
+.functionalPart{
+  width: 20%;
+  justify-content: space-around;
+  display: flex;
+  padding-bottom: 60px;
+  margin: 80px 40px;
+}
+
+.codePart{
+  width: 100%;
+}
+
+.tile {
+  width: 140px;
+  height: 260px;
+}
+
+.image {
+  width: 100%;
+  height: 60px;
+  background:grey;
+}

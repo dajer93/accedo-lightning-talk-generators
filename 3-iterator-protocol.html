@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iterator protocol - LightningTalk - JS generators</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="codePart">
+  <pre>
+    const iteratorExample = {
+      count: 0,
+      next: function() {
+        this.count++;
+    
+        if (this.count > 5) {
+          return { done: true, value: undefined };
+        }
+    
+        return { done: false, value: this.count };
+      }
+    };
+    
+    console.log(iteratorExample.next());
+    console.log(iteratorExample.next());
+    ...
+  </pre>
+</div>
+</body>
+<script>
+
+const iteratorExample = {
+  count: 0,
+  next: function() {
+    this.count++;
+
+    if (this.count > 5) {
+      return { done: true, value: undefined };
+    }
+
+    return { done: false, value: this.count };
+  }
+};
+
+console.log(iteratorExample.next());
+console.log(iteratorExample.next());
+console.log(iteratorExample.next());
+console.log(iteratorExample.next());
+console.log(iteratorExample.next());
+console.log(iteratorExample.next());
+console.log(iteratorExample.next());
+  
+
+</script>
+</html>

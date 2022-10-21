@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yo I heard you like generators, so I put a generator in yo generator - LightningTalk - JS generators</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="codePart">
+  <pre>
+    function* generator1 () {
+      yield 'this';
+      yield 'runs';
+      yield 'in the middle';
+    }
+    
+    function* generator2 () {
+      yield 'this runs first';
+      yield* generator1();
+      yield 'this runs last';
+    }
+    
+    console.log('generator in generator: ', [...generator2()]);
+  </pre>
+</div>
+</body>
+<script>
+
+function* generator1 () {
+  yield 'this';
+  yield 'runs';
+  yield 'in the middle';
+}
+
+function* generator2 () {
+  yield 'this runs first';
+  yield* generator1();
+  yield 'this runs last';
+}
+
+window.g2 = generator2();
+  
+
+</script>
+</html>

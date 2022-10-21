@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lazy evaluation - LightningTalk - JS generators</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="codePart">
+  <pre>
+    possibleParkingSpots = ({
+      letters: ['A', 'B', 'C', 'D'],
+      [Symbol.iterator]: function* (){
+        for (let letter of this.letters) {
+          for (let i = 100; i < 102; i++) yield `${letter}${i}`;
+          for (let i = 200; i < 205; i++) yield `${letter}${i}`;
+          for (let i = 300; i < 305; i++) yield `${letter}${i}`;
+        }
+      }
+    });
+  
+    function* take(n, iterable) {
+      for(let item of iterable){
+        if (n <= 0) return;
+        n--;
+        yield item;
+      }
+    }
+  
+    const parkingSpots = [...possibleParkingSpots];
+  
+    console.log([...take(20, parkingSpots)]);
+  </pre>
+</div>
+</body>
+<script>
+
+  possibleParkingSpots = ({
+    letters: ['A', 'B', 'C', 'D'],
+    [Symbol.iterator]: function* (){
+      for (let letter of this.letters) {
+        for (let i = 100; i < 102; i++) yield `${letter}${i}`;
+        for (let i = 200; i < 205; i++) yield `${letter}${i}`;
+        for (let i = 300; i < 305; i++) yield `${letter}${i}`;
+      }
+    }
+  });
+
+  function* take(n, iterable) {
+    for(let item of iterable){
+      if (n <= 0) return;
+      n--;
+      yield item;
+    }
+  }
+
+  const parkingSpots = [...possibleParkingSpots];
+
+  console.log([...take(20, parkingSpots)]);
+  
+
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LightningTalk - JS generators - Yo I heard you like generators, so I put a generator in yo generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="codePart">
+  <pre>
+    function* generator1 () {
+      yield 'this';
+      yield 'runs';
+      yield 'in the middle';
+    }
+    
+    function* generator2 () {
+      yield 'this runs first';
+      yield* generator1();
+      yield 'this runs last';
+    }
+    
+    console.log('generator in generator: ', [...generator2]);
+  </pre>
+</div>
+</body>
+<script>
+
+async function fetchUser() {
+  return Promise.resolve({ id: 'asd' });
+}
+
+async function fetchUserData() {
+  return Promise.resolve('user data fetched');
+}
+
+function* HomeDataFetcher() {
+  try {
+    const user = yield fetchUser();
+    const userData = yield fetchUserData(user?.id);
+  } catch(e) {
+    // error handling
+  }
+}
+
+window.addEventListener('load', async function() {
+  const fetcher = HomeDataFetcher();
+  const user = await fetcher.next();
+  const userData = await fetcher.next();
+
+  console.log(userData);
+});
+
+
+  
+
+</script>
+</html>
